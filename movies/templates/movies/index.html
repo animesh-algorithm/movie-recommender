@@ -1,0 +1,16 @@
+{% extends 'movies/template.html' %}
+
+{% block content %}
+<br>
+<h2 class='text-left'>Top Hits</h2>
+<div class='movies container'>
+    {% for title, genre, poster, imdb in data %}
+        <a href='{% url "get_recommendations" imdb %}'>
+            <div class='movie'>
+                <img src="{{ poster }}" alt="">
+                <h6>{{ title }}</h6>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
