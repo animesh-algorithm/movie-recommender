@@ -9,7 +9,7 @@ def recommender_sigmoid_kernel(title, sig, df, movie_indices):
     idx = movie_indices[title]
     sig_scores = list(enumerate(sig[idx]))
     sig_scores = sorted(sig_scores, key=lambda x: x[1], reverse=True)
-    sig_scores = sig_scores[1: 11]
+    sig_scores = sig_scores[1: 21]
     indices = [i[0] for i in sig_scores]
     for i in indices:
         title = df.iloc[i]['title']
