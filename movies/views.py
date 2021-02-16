@@ -12,7 +12,7 @@ sig_scores = joblib.load('sig.sav')
 # Create your views here.
 def index(request):
     # df = pd.read_csv('https://raw.githubusercontent.com/animesharma3/Movie-Recommendation/main/movies_dataset.csv')
-    data = scrape.get_top_movies(df, 10)
+    data = scrape.get_top_movies(df, 50)
     context = {
         'data': data
     }
