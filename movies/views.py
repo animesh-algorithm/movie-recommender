@@ -1,9 +1,10 @@
 from django.shortcuts import render, HttpResponse
 from . import scrape
-from .recommend import recommender_sigmoid_kernel
+from .recommend import recommender_sigmoid_kernel, recommender_nearest_neighbors
 import pandas as pd
 import pickle
 import joblib
+import random
 
 df = pd.read_csv('movies_dataset.csv')
 sig_scores = joblib.load('sig.sav')
@@ -20,7 +21,10 @@ def index(request):
 def get_movie_recommendations(request, imdb):
     title = df[df['imdb_id'] == imdb]['title'].values[0]
     movie_indices = pd.Series(df.index, index=df['title'])
-    recommendations = recommender_sigmoid_kernel(title, sig_scores, df, movie_indices)
+    recommendations1 = recommender_sigmoid_kernel(title, sig_scores, df, movie_indices)
+    recommendations2 = recommender_nearest_neighbors(title, df)
+    recommendations1.extend(recommendations2)
+    random.shuffle(recommendations1)
     title, released, runtime, genre, plot, actors, writers, production, boxoffice, imdb_ratings, rotten_tomatoes_ratings, awards, poster, overview, tagline = scrape.get_movie_data(df, imdb)
     context = {
         'title': title,
@@ -38,6 +42,6 @@ def get_movie_recommendations(request, imdb):
         'poster': poster,
         'overview': overview,
         'tagline': tagline,
-        'recommendations': recommendations
+        'recommendations': recommendations1
     }
     return render(request, 'movies/recommend.html', context=context)
