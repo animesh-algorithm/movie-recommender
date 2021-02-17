@@ -12,9 +12,12 @@ sig_scores = joblib.load('sig.sav')
 # Create your views here.
 def index(request):
     # df = pd.read_csv('https://raw.githubusercontent.com/animesharma3/Movie-Recommendation/main/movies_dataset.csv')
-    data = scrape.get_top_movies(df, 50)
+    top_movies = scrape.get_top_movies(df, 10)
+    # Get top Action Movies
+    top_action = scrape.filter_movies_by_genre('Action', df, 20)
     context = {
-        'data': data
+        'top_movies': top_movies,
+        'top_action': top_action
     }
     return render(request, 'movies/index.html', context=context)
 
