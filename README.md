@@ -3,7 +3,7 @@
 ## Links and Notebooks
 [sig.sav](https://cutt.ly/4k06hH0) <br>
 [Cosine Similarity based Recommender System](https://cutt.ly/lk06O6U) <br>
-[Sigmoid Kernal based Recommender System](https://cutt.ly/Wk2qqud) <br>
+[Sigmoid Kernel based Recommender System](https://cutt.ly/Wk2qqud) <br>
 [Nearest Nearest Neighbors based Recommender System](https://cutt.ly/6k2qWOu) <br>
 
 ## Snapshots
