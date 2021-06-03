@@ -1,0 +1,37 @@
+{% extends 'movies/template.html' %}
+
+{% block content %}
+<br>
+<h2>{{ title }}</h2>
+<div id='movie-data' class='text-center'>
+    <div class='imgs'>
+        <img src="{{ poster }}" alt="">
+        <p class="lead"><span class='text-warning'>Release Date</span> {{ released }}</p>
+        <p class="lead"><span class='text-warning'>Duration</span> {{ runtime }}</p>
+        <p class="lead"><span class='text-warning'>IMDB Ratings</span> {{ imdb_ratings }}</p>
+        <p class="lead"><span class='text-warning'>Rotten Tomatoes Ratings</span> {{ rotten_tomatoes_ratings }}</p>
+        <p class="lead"><span class='text-warning'>Box Office Collection</span> {{ boxoffice }}</p>
+    </div>
+    <div class='text-left'>
+        <p class="lead"><span class='text-warning'>Tagline</span> {{ tagline }}</p>
+        <p class="lead"><span class='text-warning'>Plot</span> {{ plot }}</p>
+        <p class="lead"><span class='text-warning'>Overview</span> {{ overview }}</p>
+        <p class="lead"><span class='text-warning'>Genre</span> {{ genre }}</p>
+        <p class="lead"><span class='text-warning'>Actors</span> {{ actors }}</p>
+        <p class="lead"><span class='text-warning'>Writers</span> {{ writers }}</p>
+        <p class="lead"><span class='text-warning'>Production</span> {{ production }}</p>
+        <p class="lead"><span class='text-warning'>Awards</span> {{ awards }}</p>
+    </div>
+</div>
+
+<br>
+<h2 class='text-left'>Recommended for you</h2>
+<div class='movies container'>
+    {% for title, genre, poster, imdb in recommendations %}
+        <a href='{% url "get_recommendations" imdb %}'><div class='movie'>
+            <img src="{{ poster }}" alt="">
+            <h6>{{ title }}</h6>
+        </div></a>
+    {% endfor %}
+</div>
+{% endblock %}

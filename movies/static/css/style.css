@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('https://raw.githubusercontent.com/julianomacielferreira/netflix-lp-clone/master/assets/img/background.jpg');;
+}
+
+a:link, a:hover, a {
+    text-decoration: none;
+    color: white
+}
+
+.movies {
+    display: inline-flex; 
+    flex-wrap: wrap;
+    padding: auto;
+}
+
+.movie {
+    display: inline; 
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.movie img {
+    height: 250px;
+    width: 200px
+}
+
+.container {
+    background: rgba(56, 53, 53, 0.4);
+}
+
+.movie h6 {
+    max-width: 200px
+}
+
+#movie-data {
+    display: -webkit-inline-flex;
+    background: rgba(17, 11, 11, 0.4);   
+}
+
+#movie-data .imgs p {
+    font-size: 20px
+}
+
+#movie-data div {
+    display: inline;
+    margin: 10px
+}
