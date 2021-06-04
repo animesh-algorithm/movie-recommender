@@ -44,22 +44,22 @@ def get_movie_data(df, imdb):
     response = requests.get(url)
     data = response.json()
     # print(data.keys())
-    overview = df[df['imdb_id'] == imdb]['overview'].values[0]
-    tagline = df[df['imdb_id'] == imdb]['tagline'].values[0]
-    title = data['Title']
-    released = data['Released']
-    runtime = data['Runtime']
-    genre = data['Genre']
-    plot = data['Plot']
-    actors = data['Actors']
-    writers = data['Writer']
-    production = data['Production']
-    boxoffice = data['BoxOffice']
-    imdb_ratings = data['imdbRating']
+    overview = str(df[df['imdb_id'] == imdb]['overview'].values[0])
+    tagline = str(df[df['imdb_id'] == imdb]['tagline'].values[0])
+    title = str(data['Title'])
+    released = str(data['Released'])
+    runtime = str(data['Runtime'])
+    genre = str(data['Genre'])
+    plot = str(data['Plot'])
+    actors = str(data['Actors'])
+    writers = str(data['Writer'])
+    production = str(data['Production'])
+    boxoffice = str(data['BoxOffice'])
+    imdb_ratings = str(data['imdbRating'])
     try:
-        rotten_tomatoes_ratings = data['Ratings'][1]['Value']
+        rotten_tomatoes_ratings = str(data['Ratings'][1]['Value'])
     except Exception as e:
         rotten_tomatoes_ratings = 'NA'
-    awards = data['Awards']
-    poster = data['Poster']    
+    awards = str(data['Awards'])
+    poster = str(data['Poster']    )
     return [title, released, runtime, genre, plot, actors, writers, production, boxoffice, imdb_ratings, rotten_tomatoes_ratings, awards, poster, overview, tagline]
