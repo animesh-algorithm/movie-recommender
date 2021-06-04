@@ -36,11 +36,13 @@ def recommender_nearest_neighbors(title, df):
     for i in ind[0]:
         title = df.iloc[i]['title']
         imdb_id = df.iloc[i]['imdb_id']
+        tagline = df.iloc[i]['tagline']
+        overview = df.iloc[i]['overview']
         url = 'https://www.omdbapi.com/?apikey=69de4384&i={}'.format(imdb_id) # Import data from API
         response = requests.get(url)
         data = response.json()
         # print(data.keys())
         genre = data['Genre']
         poster_img = data['Poster']
-        result.append([title, genre, poster_img, imdb_id])
+        result.append([title, genre, poster_img, imdb_id, tagline, overview])
     return result

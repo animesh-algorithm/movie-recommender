@@ -56,7 +56,10 @@ def get_movie_data(df, imdb):
     production = data['Production']
     boxoffice = data['BoxOffice']
     imdb_ratings = data['imdbRating']
-    rotten_tomatoes_ratings = data['Ratings'][1]['Value']
+    try:
+        rotten_tomatoes_ratings = data['Ratings'][1]['Value']
+    except Exception as e:
+        rotten_tomatoes_ratings = 'NA'
     awards = data['Awards']
     poster = data['Poster']    
     return [title, released, runtime, genre, plot, actors, writers, production, boxoffice, imdb_ratings, rotten_tomatoes_ratings, awards, poster, overview, tagline]
